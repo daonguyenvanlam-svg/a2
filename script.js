@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const rejectBtn = document.getElementById('rejectCookiesBtn');
 
     if (cookieBanner && acceptBtn && rejectBtn) {
-        const consent = localStorage.getItem('cookieConsent');
+        let consent = null; try { consent = localStorage.getItem('cookieConsent'); } catch(e) { console.warn(e); }
         
         if (consent === null) {
             setTimeout(() => {
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         acceptBtn.addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'accepted');
+            try { localStorage.setItem('cookieConsent', 'accepted'); } catch(e) { console.warn(e); }
             cookieBanner.classList.remove('show');
             setTimeout(() => {
                 cookieBanner.style.display = 'none';
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         rejectBtn.addEventListener('click', () => {
-            localStorage.setItem('cookieConsent', 'rejected');
+            try { localStorage.setItem('cookieConsent', 'rejected'); } catch(e) { console.warn(e); }
             cookieBanner.classList.remove('show');
             setTimeout(() => {
                 cookieBanner.style.display = 'none';

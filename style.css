@@ -146,6 +146,7 @@ a {
     overflow: hidden;
     box-shadow: var(--shadow-tactile);
     transition: var(--transition-spring);
+    position: relative;
 }
 
 .recipe-card:hover {
@@ -153,6 +154,19 @@ a {
     box-shadow: var(--shadow-tactile-hover);
     border-color: rgba(5, 150, 105, 0.2);
 }
+
+/* Stretched link for full card clickability */
+.blog-link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    cursor: pointer;
+}
+
 
 /* Header & Navigation */
 header {
